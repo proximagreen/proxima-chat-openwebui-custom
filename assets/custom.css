@@ -1,0 +1,44 @@
+/* ============================================
+   PROXIMA CHAT — Custom Theme Override
+   Only rules that CANNOT be expressed via Tailwind tokens.
+   Tailwind handles: gray palette, blue→green, font, checkboxes.
+   ============================================ */
+
+/* === SCROLLBAR — not controllable via Tailwind === */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(45, 107, 102, 0.3);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(45, 107, 102, 0.5);
+}
+
+/* === SELECTION COLOR === */
+::selection {
+  background-color: rgba(45, 107, 102, 0.3);
+}
+
+/* === AUTH PAGE — gradient background === */
+#auth-container button[type="submit"] {
+  background: linear-gradient(135deg, #143330 0%, #27524f 100%);
+  color: white;
+  font-weight: 600;
+}
+#auth-container button[type="submit"]:hover {
+  background: linear-gradient(135deg, #27524f 0%, #2d6b66 100%);
+}
+
+/* === SPLASH SCREEN === */
+#splash-screen {
+  background: #fcfcfb;
+}
+html.dark #splash-screen {
+  background: #0d1f1e;
+}

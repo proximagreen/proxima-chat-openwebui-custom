@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Proxima logo: two arrows forming an open diamond -->
+  <!-- Arrow top-left (pointing upper-left) -->
+  <path d="M10 32L32 10L38 16L22 32L38 48L32 54Z" fill="#143330"/>
+  <!-- Arrow bottom-right (pointing lower-right) -->
+  <path d="M54 32L32 54L26 48L42 32L26 16L32 10Z" fill="#143330"/>
+</svg>
