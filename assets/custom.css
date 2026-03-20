@@ -1,13 +1,4 @@
 /* ============================================
-   PROXIMA CHAT — Custom Theme
-   ============================================ */
-
-/* === SCROLLBAR === */
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background-color: rgba(45, 107, 102, 0.3); border-radius: 9999px; }
-::-webkit-scrollbar-thumb:hover { background-color: rgba(45, 107, 102, 0.5); }
-/* ============================================
    PROXIMA CHAT — Custom Theme v3
    Design system: proxima.green
 
@@ -291,42 +282,4 @@ html.dark button.bg-white.text-gray-900:hover {
    =========================================== */
 .text-blue-600, .text-blue-500 {
   color: hsl(175, 40%, 30%) !important;
-}
-
-::selection { background-color: rgba(45, 107, 102, 0.3); }
-
-/* === AUTH — submit button === */
-#auth-container button[type="submit"] {
-  background: linear-gradient(135deg, #143330 0%, #27524f 100%);
-  color: white;
-  font-weight: 600;
-}
-#auth-container button[type="submit"]:hover {
-  background: linear-gradient(135deg, #27524f 0%, #2d6b66 100%);
-}
-
-/* === SPLASH === */
-#splash-screen { background: #fcfcfb; }
-html.dark #splash-screen { background: #0d1f1e; }
-
-/* === AUTH PAGE — Replace small icon with Proxima horizontal logo === */
-#auth-page img.size-6,
-#auth-page img.w-6,
-#auth-page img[src*="favicon"] {
-  content: url('/static/proxima-logo.png');
-  width: 140px !important;
-  height: auto !important;
-  border-radius: 0 !important;
-  max-width: 180px;
-}
-
-/* === AUTH PAGE — Hide slideshow images === */
-#auth-page img[src*="/assets/images/"] {
-  display: none !important;
-}
-
-/* === AUTH PAGE — Video background === */
-#auth-page {
-  background: #0d1f1e !important;
-  position: relative;
 }
