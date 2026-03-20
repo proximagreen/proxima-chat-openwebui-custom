@@ -1,0 +1,39 @@
+<div id="proxima-video-bg"><video autoplay muted loop playsinline preload="auto"><source src="/static/proxima-bg.mp4" type="video/mp4"></video></div>
+<div id="proxima-headlines" style="display:none">
+  <span class="proxima-hl" data-sub="où que vous soyez">Moins de bruit, plus de clarté</span>
+  <span class="proxima-hl" data-sub="où que vous soyez">Vos données restent les vôtres</span>
+  <span class="proxima-hl" data-sub="où que vous soyez">Une question, une réponse fiable</span>
+  <span class="proxima-hl" data-sub="où que vous soyez">Pensez mieux, pas plus longtemps</span>
+  <span class="proxima-hl" data-sub="où que vous soyez">L&#39;IA qui ne vous espionne pas</span>
+  <span class="proxima-hl" data-sub="où que vous soyez">Reprenez le contrôle de vos idées</span>
+  <span class="proxima-hl" data-sub="où que vous soyez">Votre prochaine bonne idée est ici</span>
+  <span class="proxima-hl" data-sub="où que vous soyez">L&#39;intelligence sans la surveillance</span>
+  <span class="proxima-hl" data-sub="où que vous soyez">Ce que l&#39;IA devrait toujours être</span>
+</div>
+<script>
+!function(){
+  var h=document.querySelectorAll(".proxima-hl"),idx=0;
+  function go(){
+    var el=document.querySelector("#auth-page h1,#auth-page h2,#auth-page .text-2xl,#auth-page .text-3xl,#auth-page .text-4xl");
+    if(!el)return setTimeout(go,500);
+    var sub=el.parentElement.querySelector("p,span.text-sm,span.text-base,.text-muted-foreground");
+    if(!sub){sub=document.createElement("p");sub.className="text-base mt-2";el.parentElement.insertBefore(sub,el.nextSibling)}
+    el.style.transition="opacity .5s ease";
+    if(sub)sub.style.transition="opacity .5s ease";
+    function rotate(){
+      el.style.opacity=0;
+      if(sub)sub.style.opacity=0;
+      setTimeout(function(){
+        el.textContent=h[idx].textContent;
+        if(sub)sub.textContent=h[idx].dataset.sub;
+        el.style.opacity=1;
+        if(sub)sub.style.opacity=1;
+        idx=(idx+1)%h.length;
+      },600);
+      setTimeout(rotate,5000);
+    }
+    rotate();
+  }
+  go();
+}()
+</script>

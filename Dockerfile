@@ -55,8 +55,9 @@ COPY assets/Video_ecologique_Prete.mp4 /app/build/static/proxima-bg.mp4
 COPY assets/transparent.png /app/build/static/transparent.png
 RUN find /app/build/assets/images/ -type f \( -name "*.jpg" -o -name "*.png" \) -exec cp /app/build/static/transparent.png {} \; 2>/dev/null || true
 
-# --- Inject video element before </body> (safe: only adds, never modifies) ---
-RUN sed -i 's|</body>|<div id="proxima-video-bg"><video autoplay muted loop playsinline preload="auto"><source src="/static/proxima-bg.mp4" type="video/mp4"></video></div></body>|' /app/build/index.html
+# --- Inject video + rotating headlines before </body> ---
+COPY assets/inject-auth.html /tmp/inject-auth.html
+RUN sed -i '/<\/body>/{ r /tmp/inject-auth.html' -e '}' /app/build/index.html
 
 # --- Patch env.py (backend branding) ---
 RUN sed -i \
