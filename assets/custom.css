@@ -59,7 +59,7 @@ html.dark #splash-screen {
   height: 100%;
   object-fit: cover;
 }
-/* Dark overlay on top of video */
+/* Dark overlay on top of video for readability */
 #proxima-video-bg::after {
   content: '';
   position: absolute;
@@ -67,37 +67,50 @@ html.dark #splash-screen {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(13, 31, 30, 0.55);
+  background: rgba(13, 31, 30, 0.5);
+  z-index: 1;
 }
 
-/* Hide the original slideshow images on onboarding page */
+/* Hide original slideshow completely */
 #auth-page .image,
-#auth-page img[src*="adam.jpg"],
-#auth-page img[src*="galaxy.jpg"],
-#auth-page img[src*="earth.jpg"],
-#auth-page img[src*="space.jpg"] {
+#auth-page img[src*="adam"],
+#auth-page img[src*="galaxy"],
+#auth-page img[src*="earth"],
+#auth-page img[src*="space"],
+#auth-page img[src*="data:image/gif"] {
   display: none !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
-/* Make onboarding background transparent so video shows through */
+/* Make auth page background transparent so video shows */
 #auth-page {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+#auth-page > div {
   background: transparent !important;
 }
 
-/* === AUTH PAGE — Replace top-left icon with full Proxima logo === */
-/* Light mode: dark green logo */
-#auth-page img[src*="logo.png"],
-#auth-page img[src*="favicon"] {
-  content: url('/static/logo-auth.svg') !important;
-  width: auto !important;
-  height: 36px !important;
-  border-radius: 0 !important;
+/* Ensure text + buttons sit above the video */
+#auth-page * {
+  position: relative;
+  z-index: 2;
 }
-/* Dark mode / onboarding (dark bg): white logo */
-html.dark #auth-page img[src*="logo.png"],
-html.dark #auth-page img[src*="favicon"] {
-  content: url('/static/logo-auth-white.svg') !important;
+
+/* === AUTH PAGE — Logo: use Proxima horizontal logo === */
+/* The entrypoint replaces favicon.png src with logo-auth-white.svg in the JS */
+/* This CSS ensures proper sizing */
+#auth-page img[src*="logo-auth"] {
   width: auto !important;
-  height: 36px !important;
+  height: 40px !important;
+  max-width: 200px !important;
   border-radius: 0 !important;
+  object-fit: contain !important;
+}
+
+/* === Hide video on non-auth pages === */
+body:not(:has(#auth-page)) #proxima-video-bg {
+  display: none;
 }
