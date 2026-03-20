@@ -1,5 +1,5 @@
 /* ============================================
-   PROXIMA CHAT — Custom Theme Override
+   PROXIMA CHAT — Custom Theme
    ============================================ */
 
 /* === SCROLLBAR === */
@@ -8,10 +8,9 @@
 ::-webkit-scrollbar-thumb { background-color: rgba(45, 107, 102, 0.3); border-radius: 9999px; }
 ::-webkit-scrollbar-thumb:hover { background-color: rgba(45, 107, 102, 0.5); }
 
-/* === SELECTION === */
 ::selection { background-color: rgba(45, 107, 102, 0.3); }
 
-/* === AUTH PAGE — submit button === */
+/* === AUTH — submit button === */
 #auth-container button[type="submit"] {
   background: linear-gradient(135deg, #143330 0%, #27524f 100%);
   color: white;
@@ -21,38 +20,28 @@
   background: linear-gradient(135deg, #27524f 0%, #2d6b66 100%);
 }
 
-/* === SPLASH SCREEN === */
+/* === SPLASH === */
 #splash-screen { background: #fcfcfb; }
 html.dark #splash-screen { background: #0d1f1e; }
 
-/* === VIDEO BACKGROUND (auth/onboarding page) === */
-#proxima-video-bg {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  z-index: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-#proxima-video-bg video {
-  width: 100%; height: 100%;
-  object-fit: cover;
-}
-#proxima-video-bg::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(13, 31, 30, 0.5);
-  z-index: 1;
+/* === AUTH PAGE — Replace small icon with Proxima horizontal logo === */
+#auth-page img.size-6,
+#auth-page img.w-6,
+#auth-page img[src*="favicon"] {
+  content: url('/static/proxima-logo.png');
+  width: 140px !important;
+  height: auto !important;
+  border-radius: 0 !important;
+  max-width: 180px;
 }
 
-/* Make auth page transparent so video shows through */
+/* === AUTH PAGE — Hide slideshow images === */
+#auth-page img[src*="/assets/images/"] {
+  display: none !important;
+}
+
+/* === AUTH PAGE — Video background === */
 #auth-page {
-  background: transparent !important;
-}
-
-/* Hide video when not on auth page */
-body:not(:has(#auth-page)) #proxima-video-bg {
-  display: none;
+  background: #0d1f1e !important;
+  position: relative;
 }
