@@ -1,10 +1,8 @@
 /* ============================================
    PROXIMA CHAT — Custom Theme Override
-   Only rules that CANNOT be expressed via Tailwind tokens.
-   Tailwind handles: gray palette, blue→green, font, checkboxes.
    ============================================ */
 
-/* === SCROLLBAR — not controllable via Tailwind === */
+/* === SCROLLBAR === */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -25,7 +23,7 @@
   background-color: rgba(45, 107, 102, 0.3);
 }
 
-/* === AUTH PAGE — gradient background === */
+/* === AUTH PAGE — submit button === */
 #auth-container button[type="submit"] {
   background: linear-gradient(135deg, #143330 0%, #27524f 100%);
   color: white;
@@ -41,4 +39,65 @@
 }
 html.dark #splash-screen {
   background: #0d1f1e;
+}
+
+/* === ONBOARDING — Video Background === */
+
+/* Video container injected by entrypoint */
+#proxima-video-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+#proxima-video-bg video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Dark overlay on top of video */
+#proxima-video-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(13, 31, 30, 0.55);
+}
+
+/* Hide the original slideshow images on onboarding page */
+#auth-page .image,
+#auth-page img[src*="adam.jpg"],
+#auth-page img[src*="galaxy.jpg"],
+#auth-page img[src*="earth.jpg"],
+#auth-page img[src*="space.jpg"] {
+  display: none !important;
+}
+
+/* Make onboarding background transparent so video shows through */
+#auth-page {
+  background: transparent !important;
+}
+
+/* === AUTH PAGE — Replace top-left icon with full Proxima logo === */
+/* Light mode: dark green logo */
+#auth-page img[src*="logo.png"],
+#auth-page img[src*="favicon"] {
+  content: url('/static/logo-auth.svg') !important;
+  width: auto !important;
+  height: 36px !important;
+  border-radius: 0 !important;
+}
+/* Dark mode / onboarding (dark bg): white logo */
+html.dark #auth-page img[src*="logo.png"],
+html.dark #auth-page img[src*="favicon"] {
+  content: url('/static/logo-auth-white.svg') !important;
+  width: auto !important;
+  height: 36px !important;
+  border-radius: 0 !important;
 }

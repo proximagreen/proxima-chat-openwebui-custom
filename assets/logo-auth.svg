@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 48" fill="none">
+  <!-- Proxima icon: two arrows forming open diamond -->
+  <g transform="translate(0, 0) scale(0.75)">
+    <path d="M10 32L32 10L38 16L22 32L38 48L32 54Z" fill="#143330"/>
+    <path d="M54 32L32 54L26 48L42 32L26 16L32 10Z" fill="#143330"/>
+  </g>
+  <!-- Text "Proxima" -->
+  <text x="52" y="34" font-family="'Plus Jakarta Sans', 'Inter', system-ui, sans-serif" font-size="28" font-weight="700" fill="#143330" letter-spacing="-0.5">Proxima</text>
+</svg>

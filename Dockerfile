@@ -1,10 +1,6 @@
 FROM ghcr.io/open-webui/open-webui:main
 
 # --- Proxima Chat branding ---
-# Assets must be copied to ALL 3 static locations:
-#   /app/backend/open_webui/static/  (backend serves these)
-#   /app/build/static/               (frontend built assets)
-#   /app/build/                       (favicon.png at root)
 
 # 1. Backend static
 COPY assets/ /app/backend/open_webui/static/
@@ -23,9 +19,21 @@ COPY assets/web-app-manifest-192x192.png /app/build/static/web-app-manifest-192x
 COPY assets/web-app-manifest-512x512.png /app/build/static/web-app-manifest-512x512.png
 COPY assets/site.webmanifest /app/build/static/site.webmanifest
 COPY assets/custom.css /app/build/static/custom.css
+COPY assets/logo-auth.svg /app/build/static/logo-auth.svg
+COPY assets/logo-auth.svg /app/backend/open_webui/static/logo-auth.svg
+COPY assets/logo-auth-white.svg /app/build/static/logo-auth-white.svg
+COPY assets/logo-auth-white.svg /app/backend/open_webui/static/logo-auth-white.svg
 
-# 3. Build root (favicon served from /)
+# 3. Build root
 COPY assets/favicon.png /app/build/favicon.png
+
+# 4. Background video for onboarding page
+COPY assets/Video_ecologique_Prete.mp4 /app/backend/open_webui/static/proxima-bg.mp4
+COPY assets/Video_ecologique_Prete.mp4 /app/build/static/proxima-bg.mp4
+
+# 5. Entrypoint script (patches JS text + injects video at startup)
+COPY entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
 
 # Patch env.py: remove "(Open WebUI)" suffix, default to "Proxima Chat"
 RUN sed -i \
@@ -36,3 +44,5 @@ RUN sed -i \
     /app/backend/open_webui/env.py
 
 ENV WEBUI_NAME="Proxima Chat"
+
+ENTRYPOINT ["/app/entrypoint.sh"]
